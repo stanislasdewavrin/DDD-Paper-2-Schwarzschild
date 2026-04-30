@@ -1,0 +1,35 @@
+# LaTeX auxiliary files
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Truncated intermediate versions (cleanup artefacts)
+paper_v*.tex
+paper_v*.pdf
+paper_new.*
+paper_tmp.*
+references.bib.tmp
+
+# Python artefacts
+__pycache__/
+*.pyc
+*.pyo
+
+# Local simulation outputs at root (NOT in data/) — these are work-in-progress
+# files from running the scripts at the project root rather than in code/.
+# Files actually published as paper data live under data/ and are committed.
+/bandwidth_clock_L*_E*.json
+/iterative_cascade_L*.json
+/v7_rule_L*_tau*_E*_n*.json
+/result_L*.txt
+
+# OS artefacts
+.DS_Store
+Thumbs.db
+desktop.ini

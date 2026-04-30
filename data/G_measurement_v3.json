@@ -1,0 +1,13 @@
+{
+  "L": 64,
+  "N_ITER": 4000,
+  "ALPHA": 1.0,
+  "DELTA_0": 0.1,
+  "A": -2.1546428296727226e-09,
+  "A_err": 8.126673453144471e-13,
+  "A_rel_precision": -0.0003771703291713952,
+  "G_eff": -1.0773214148363613e-08,
+  "G_rel_precision": -0.0003771703291713952,
+  "experimental_precision": 2.2e-05,
+  "factor_better_than_exp": null
+}

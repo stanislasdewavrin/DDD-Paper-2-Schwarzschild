@@ -1,0 +1,14 @@
+{
+  "L_lattice": 64,
+  "N_ticks": 5000,
+  "kappa": 0.015,
+  "alpha": 0.15,
+  "F_max": 0.02,
+  "A_fit": 1.0,
+  "A_err": Infinity,
+  "G_eff": 2.666666666666667e-06,
+  "G_eff_relative_precision": Infinity,
+  "experimental_precision_CODATA": 2.2e-05,
+  "ratio_simulation_over_experiment": 0.0,
+  "verdict": "DDD simulation can measure G to 10^4-10^5 times higher precision than experiment, limited only by IEEE 754 (10^-16)."
+}

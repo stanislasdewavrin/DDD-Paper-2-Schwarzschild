@@ -1,0 +1,14 @@
+{
+  "L": 64,
+  "N_ITER": 5000,
+  "M_source": 1.0,
+  "A_fit": 0.07888083211980235,
+  "A_err": 4.877000159220551e-06,
+  "A_continuum_prediction": 0.07957747154594767,
+  "ratio_fit_continuum": 0.9912457707864833,
+  "G_eff": 0.07888083211980235,
+  "G_rel_precision": 6.182744309559867e-05,
+  "experimental_precision": 2.2e-05,
+  "ratio_sim_vs_exp": 0.35582904449053826,
+  "verdict": "Simulation precision 6.2e-05, worse than experiment (2.2e-05) by factor 0.4"
+}

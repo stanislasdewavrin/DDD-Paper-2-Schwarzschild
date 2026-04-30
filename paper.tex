@@ -1,0 +1,712 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{authblk}
+\usepackage{cite}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\title{\textbf{Discrete Drainage Dynamics II:\\
+Cascade-Throttled Drainage and the Emergence\\
+of the Schwarzschild Time-Dilation Factor}}
+\author[1]{Stanislas Dewavrin}
+\affil[1]{Independent researcher \\ \texttt{dewavrin.iphone@gmail.com}}
+\date{April 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+We extend the local rule of Paper~I by a single physical
+modification: the directional flux on a link is throttled by
+the bandwidth available at the source node. A node with
+reduced reserve $R$ pushes flux at a rate proportional to
+$R/R_0$; the receiver imposes no further limitation, since
+accepting flux is passive. Under this modification, the
+steady-state field around a point sink in a substrate at rest
+satisfies the algebraic identity $\nabla^2(R^2) = 0$ in the
+continuum limit, away from the sink. The unique
+spherically-symmetric solution with $R \to R_0$ at infinity is
+$R/R_0 = \sqrt{1 - \beta/r}$, with $\beta$ fixed by the source
+strength. This is precisely the form of the Schwarzschild
+time-dilation factor, $\sqrt{1 - 2GM/c^2 r}$, under the
+identification $\beta = 2GM/c^2$. Combined with the operational
+identification of effective proper time with local bandwidth
+($d\tau/dt = R/R_0$), the model reproduces the gravitational
+time dilation of weak-field general relativity not as a
+leading-order approximation, but as a strict consequence of the
+bandwidth-throttled cascade. We verify the result numerically.
+We do not derive Newton's $G$, the speed of light $c$, or the
+full Einstein equations; we derive the static spherically
+symmetric time-dilation factor, in the continuum limit, modulo
+the choice of throttle prescription, which we discuss.
+\end{abstract}
+
+\section{What this paper claims}
+\label{sec:claims}
+
+\begin{enumerate}
+\item \textbf{Bandwidth identification.} Within the rule of
+Paper~I, the maximum directional flux a node $i$ can push out
+is $\alpha R_i$, set by the locally available reserve. We
+identify the dimensionless ratio $R_i/R_0$ with the local rate
+of effective proper time:
+\[
+\frac{d\tau_i}{dt} \;=\; \frac{R_i}{R_0}.
+\]
+This identification is operational, not derived; it states
+that a node's local rate of activity per coordinate tick is
+proportional to its available reserve.
+
+\item \textbf{Single-throttle modification.} We extend the
+local rule of Paper~I by throttling each directional flux on
+the source side by the source's bandwidth fraction:
+\[
+F_{i \to j} \;=\; \alpha\, \frac{R_i}{R_0}\, (R_i - R_j)_+.
+\]
+The receiver imposes no additional throttle: pushing flux
+costs the source bandwidth, accepting flux is passive at the
+receiver. We adopt this prescription as physically motivated
+but not uniquely derived; we discuss alternatives in
+Sec.~\ref{sec:throttle-prescription}.
+
+\item \textbf{Schwarzschild form, derived.} In the continuum
+limit, the steady-state field of the throttled rule around a
+point sink satisfies $\nabla^2(R^2) = 0$ away from the sink.
+The unique spherically symmetric solution with $R \to R_0$ at
+infinity is
+\[
+\frac{R(r)}{R_0} \;=\; \sqrt{1 - \frac{\beta}{r}},
+\qquad
+\beta \;=\; \frac{\kappa E_0}{2\pi\,\alpha\, R_0}.
+\]
+Combined with the bandwidth identification, this gives the
+gravitational time-dilation factor
+\[
+\frac{d\tau(r)}{dt} \;=\; \sqrt{1 - \frac{\beta}{r}},
+\]
+which under the calibration $\beta = 2GM_{\rm phys}/c^2$
+matches the weak-field Schwarzschild factor at all orders, not
+just the leading order. The match is exact in the continuum
+limit, modulo the throttle prescription.
+\end{enumerate}
+
+\textbf{What this paper does not claim.}
+
+We do not derive special relativity, and we do not address
+kinematic (motion-induced) clock-rate effects; those are
+deferred to Paper~III. We do not derive the full Schwarzschild
+metric; we derive its time-time component for a static
+spherically symmetric source in the weak-field limit. We do not
+derive Newton's gravitational constant $G$ or the speed of
+light $c$; they enter as calibrations, exactly as in Paper~I.
+We do not show that the rule is unique. We do not derive the
+single-throttle prescription itself: it is a physically
+motivated choice, justified by the source-receiver asymmetry of
+flux exchange, but the rule of Paper~I as written does not
+select it uniquely. Different throttle prescriptions yield
+different steady-state forms, as illustrated in
+Sec.~\ref{sec:numerical}; the Schwarzschild form is the one
+selected by the single-throttle choice.
+
+\section{The picture, in plain words}
+\label{sec:picture}
+
+Picture each node as a tank holding a non-negative amount of
+stuff at level $R$, with a rest level $R_0$. The pipes between
+neighbours carry flow whose magnitude depends on the level
+difference. There is one limit on what any tank can deliver:
+you cannot push out more stuff than the tank actually holds.
+A full tank can sustain the rated flow $\alpha R_0$. A
+half-full tank can sustain at most $\alpha R_0 / 2$. An empty
+tank can deliver nothing. The rate at which a tank can engage
+with its environment is bounded by the level it currently
+holds, and not by anything else.
+
+Now think about local time at the tank. The rule provides no
+hidden mechanism, no internal oscillator, no auxiliary phase.
+A tank's participation in the rule is entirely its flux
+activity. We take the rate of effective proper time at a tank
+to be the rate at which it can support that activity per
+coordinate tick. Full tank: rated rate. Half-full: half rate.
+Empty: no rate. Proper time \emph{is} the throughput.
+
+Drop a sink near a region of full tanks. The sink absorbs.
+Neighbouring tanks lose stuff to the sink. Their levels drop.
+Their throughput capacity drops. Their effective proper time
+slows down. The neighbours of the neighbours feel the same
+pull, and the cascade propagates outward through the lattice.
+
+Now ask the question that gives the paper its central result.
+The cascade itself is throttled by bandwidth: a tank that has
+been drained can push less stuff than a full tank, even for the
+same level difference. This is the physically natural form of
+the rule --- the source needs reserve to push, the receiver does
+not need anything to accept. So the flux on a link is not just
+proportional to $(R_i - R_j)$, it is proportional to
+$(R_i/R_0)(R_i - R_j)$: the source's bandwidth limits its own
+emission rate.
+
+What does the cascade settle into? Far from the sink, levels
+are barely perturbed and the throttle is invisible. The leading
+behaviour is the $1/r$ profile of Paper~I. But near the sink,
+the throttle bites: the cascade has to work harder to maintain
+the same flux through a region of reduced bandwidth. The
+result is a profile that is, in the continuum limit, exactly
+$\sqrt{1 - \beta/r}$, the Schwarzschild form. The body of the
+paper makes this precise.
+
+\section{Setup}
+\label{sec:setup}
+
+We work in the framework of Paper~I. The substrate is a graph
+with at least six neighbours per node and statistical isotropy
+at large scale. Each node $i$ carries a non-negative reserve
+$R_i \ge 0$ with rest value $R_0$. Each oriented link $(i, j)$
+carries a non-negative directional flux $F_{i \to j} \ge 0$.
+The rule alternates a Link Update and a Node Update with a
+per-node rate-limiter $\beta_i \in [0, 1]$ ensuring
+$R_i \ge 0$ at all times.
+
+\paragraph{Definition (coordinate time).} Coordinate time $t$
+is the tick count of the substrate.
+
+\paragraph{Definition (bandwidth).} The local bandwidth of
+node $i$ is the dimensionless ratio
+\begin{equation}
+\mathcal{B}_i \;=\; \frac{R_i}{R_0}.
+\label{eq:bandwidth}
+\end{equation}
+At rest $\mathcal{B}_i = 1$. In the static gravitational
+regime considered below, $R_i \le R_0$ everywhere because the
+only source acts as a sink, so $\mathcal{B}_i \in [0, 1]$.
+
+\paragraph{Hypothesis (bandwidth identification).} We adopt
+the operational definition
+\begin{equation}
+\frac{d\tau_i}{dt} \;=\; \mathcal{B}_i \;=\; \frac{R_i}{R_0}
+\label{eq:tau_def}
+\end{equation}
+for the local rate of effective proper time. The
+identification is structural in the sense that it does not
+introduce a new variable beyond the reserve; it is also
+assumed in the sense that we do not derive from a deeper
+principle that ``effective proper time'' must mean ``available
+throughput''. We proceed under this assumption and discuss
+what is and is not derived in the body of the paper.
+
+\paragraph{Probe approximation.} Throughout this paper we
+treat the test object as a passive probe whose own
+contribution to the reserve field is negligible compared to
+the externally generated deficit. The full self-consistent
+treatment is left to Paper~IV.
+
+\section{The bandwidth-throttled rule}
+\label{sec:throttle}
+
+\subsection{Source-side throttle: physical motivation}
+
+The flux on a link in Paper~I is the textbook discrete
+diffusion form, $F_{i \to j} = \alpha (R_i - R_j)_+$,
+proportional to the level difference. We modify it by
+throttling the source side:
+\begin{equation}
+F_{i \to j} \;=\; \alpha\, \frac{R_i}{R_0}\, (R_i - R_j)_+.
+\label{eq:throttle}
+\end{equation}
+The motivation is direct. Pushing reserve out of node $i$
+through a pipe takes resources at $i$. A drained node has
+fewer resources; it pushes less. A full node has full
+resources; it pushes the rated maximum. This is what
+``bandwidth limited'' means at the source.
+
+The receiver $j$ imposes no additional limitation. Accepting
+incoming flux costs nothing at the receiver: the reservoir has
+empty space and the inflow simply fills it. There is no rate
+at which an empty reservoir ``accepts'' more slowly. The
+throttle is one-sided, source-only.
+
+\subsection{Throttle prescription as a choice}
+\label{sec:throttle-prescription}
+
+The single-throttle is one prescription within a family. Two
+alternatives:
+
+\paragraph{No throttle.} $F = \alpha (R_i - R_j)_+$. The rule
+of Paper~I as written. Steady state: linear Poisson,
+$\delta \propto 1/r$ at leading order. No higher-order
+corrections in the static spherical regime. Equivalent to
+Newton.
+
+\paragraph{Double throttle.} $F = \alpha (R_i/R_0)(R_j/R_0)
+(R_i - R_j)_+$. Both source and receiver throttle the flux.
+Steady state: $\nabla^2(R^3) = 0$, giving $R/R_0 =
+(1 - B/r)^{1/3}$. Different functional form, not
+Schwarzschild. As we will see in Sec.~\ref{sec:numerical}, the
+double throttle has a pathological consequence: the cascade
+collapses near a strong sink because both endpoints freeze
+when their bandwidths drop.
+
+\paragraph{Single throttle, source-side.} Eq.~\eqref{eq:throttle}.
+Steady state: $\nabla^2(R^2) = 0$, giving $R/R_0 = \sqrt{1 -
+\beta/r}$. The Schwarzschild form. Cascade propagates without
+collapse.
+
+We adopt the single-throttle as physically motivated by the
+source-receiver asymmetry, but the rule of Paper~I does not
+select it uniquely. The paper's result is conditional on this
+choice; we are explicit about that.
+
+\subsection{Continuum limit}
+
+In the limit of small gradients, the discrete flux
+\eqref{eq:throttle} becomes a continuum vector field. With the
+gradient pointing in the direction of \emph{decreasing} $R$,
+the flux flows downhill, and
+\begin{equation}
+\vec{F} \;=\; -\,\alpha\, \frac{R}{R_0}\, \vec{\nabla} R.
+\label{eq:F_continuum}
+\end{equation}
+Conservation of reserve, away from sources, requires
+$\partial R/\partial t = -\vec{\nabla} \cdot \vec{F}$. In
+steady state this is
+\begin{equation}
+\vec{\nabla} \cdot \!\left[\frac{R}{R_0}\,\vec{\nabla} R\right]
+\;=\; 0.
+\label{eq:cons_continuum}
+\end{equation}
+
+\section{Derivation of the Schwarzschild form}
+\label{sec:derivation}
+
+\subsection{Reduction to Laplace equation for $R^2$}
+
+The key algebraic step. We use
+\[
+\frac{R}{R_0}\,\vec{\nabla} R \;=\;
+\frac{1}{2 R_0}\,\vec{\nabla}(R^2).
+\]
+Substituting into Eq.~\eqref{eq:cons_continuum}:
+\begin{equation}
+\frac{1}{2 R_0}\,\nabla^2(R^2) \;=\; 0
+\quad\Longleftrightarrow\quad
+\boxed{\nabla^2(R^2) \;=\; 0.}
+\label{eq:laplace_R2}
+\end{equation}
+The throttle has converted the conservation law from
+``$R$ is harmonic'' (linear Poisson) into ``$R^2$ is
+harmonic''. The square is what carries the Schwarzschild
+structure.
+
+\subsection{Spherically symmetric solution}
+
+We seek a spherically symmetric solution of
+Eq.~\eqref{eq:laplace_R2}, with boundary condition
+$R \to R_0$ at $r \to \infty$. The general spherically
+symmetric harmonic function in three dimensions is $A + B/r$.
+Therefore
+\begin{equation}
+R^2(r) \;=\; R_0^2\,\left(1 - \frac{\beta}{r}\right),
+\qquad
+R(r) \;=\; R_0\,\sqrt{1 - \frac{\beta}{r}},
+\label{eq:R_solution}
+\end{equation}
+for some constant $\beta$ with units of length. The square
+root is real for $r \ge \beta$, with $R = 0$ at $r = \beta$;
+this is a horizon of the model, where the bandwidth vanishes.
+
+\subsection{Determination of $\beta$ from the source}
+
+The constant $\beta$ is fixed by the source strength. Compute
+the radial flux at radius $r$:
+\[
+F_r(r) \;=\; -\,\alpha\,\frac{R}{R_0}\,\frac{\partial R}{\partial r}.
+\]
+From Eq.~\eqref{eq:R_solution}, $\partial R/\partial r =
+R_0\, \beta / [2 r^2 \sqrt{1 - \beta/r}]$, and the prefactor
+combines with the square root to give
+\[
+\frac{R}{R_0}\,\frac{\partial R}{\partial r}
+\;=\; \frac{R_0\,\beta}{2 r^2}.
+\]
+Therefore $F_r(r) = -\alpha R_0 \beta / (2 r^2)$, independent
+of $r$. The minus sign indicates flow inward, toward the
+sink. The total flux entering a sphere of radius $r$ is
+\[
+\Phi \;=\; -\!\!\oint F_r\,dA
+\;=\; \frac{\alpha R_0 \beta}{2 r^2}\cdot 4\pi r^2
+\;=\; 2\pi\,\alpha\, R_0\, \beta,
+\]
+also independent of $r$, as required by stationarity.
+
+This entering flux is absorbed by the sink at rate $\kappa E_0$:
+\begin{equation}
+\kappa E_0 \;=\; 2\pi\,\alpha\, R_0\, \beta
+\quad\Longleftrightarrow\quad
+\boxed{\beta \;=\; \frac{\kappa E_0}{2\pi\,\alpha\, R_0}.}
+\label{eq:beta_def}
+\end{equation}
+
+\subsection{Comparison with the linearised regime}
+
+Expand Eq.~\eqref{eq:R_solution} for small $\beta/r$:
+\[
+\frac{R(r)}{R_0} \;\approx\; 1 - \frac{\beta}{2 r}
+- \frac{1}{8}\left(\frac{\beta}{r}\right)^2 - \cdots
+\]
+The leading-order deficit is $\delta(r)/R_0 \approx \beta/(2r) =
+\kappa E_0 / (4\pi \alpha R_0 r) = M_{\rm eff} / (4\pi R_0 r)$,
+where $M_{\rm eff} = \kappa E_0/\alpha$. This is exactly the
+Newtonian profile of Paper~I. The throttle adds a quadratic
+correction; the linear regime is recovered as the leading
+term, and the higher-order structure is generated by the
+cascade.
+
+\subsection{Identification with Schwarzschild}
+
+Under the calibration of Paper~I matching the dimensionless
+deficit to the physical Newtonian potential at leading order,
+$M_{\rm eff} / R_0 \leftrightarrow 2GM_{\rm phys}/c^2$, we
+have $\beta = 2 GM_{\rm phys} / c^2$. Substituting into
+Eq.~\eqref{eq:R_solution}:
+\begin{equation}
+\frac{R(r)}{R_0}
+\;=\; \sqrt{1 - \frac{2 G M_{\rm phys}}{c^2 r}}.
+\label{eq:schwarzschild}
+\end{equation}
+This is exactly the time-time component of the Schwarzschild
+metric in the weak-field limit, $\sqrt{|g_{00}|}$. Combined
+with the bandwidth identification \eqref{eq:tau_def}:
+\begin{equation}
+\frac{d\tau(r)}{dt}
+\;=\; \sqrt{1 - \frac{2 G M_{\rm phys}}{c^2 r}}.
+\label{eq:dtau_schw}
+\end{equation}
+The match holds at all orders in $GM/c^2 r$, in the continuum
+limit, modulo the single-throttle prescription. The leading
+order coincides with weak-field general relativity by
+calibration; the higher orders are generated by the
+bandwidth-throttled cascade and coincide with the Schwarzschild
+expansion exactly.
+
+\section{Numerical illustration of the cascade}
+\label{sec:numerical}
+
+We implement the rule of Paper~I together with three flux
+prescriptions: no throttle (recovering Paper~I); single
+throttle, Eq.~\eqref{eq:throttle}; and double throttle,
+$F = \alpha (R_i/R_0)(R_j/R_0)(R_i - R_j)_+$. We run each on
+a cubic substrate with a single sink at the centre and let
+the system reach steady state.
+
+\subsection{Setup}
+
+We use $L \in \{32, 40\}$, $\alpha = \kappa = R_0 = 1$, sink
+strength $E_0 \in \{0.5, 1.5\}$, time step $\tau \le 0.05$,
+and run for several thousand ticks. Boundary: Dirichlet, with
+the outermost layer fixed at $R_0$. The script
+\texttt{code/iterative\_cascade\_test.py} executes all three
+prescriptions in turn and records the radial deficit profile.
+
+\subsection{Results}
+
+Table~\ref{tab:cascade} reports the radial deficit profile
+from a representative run at $L = 40$, $E_0 = 1.5$. The
+``GR target'' column is the continuum Schwarzschild prediction
+$1 - \sqrt{1 - 2x}$ with $x = M_{\rm eff} / (4 \pi r R_0)$.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{cccccc}
+\toprule
+$r$ & $x$ & linear & single throttle & double throttle & GR target\\
+\midrule
+1.75 & $6.82 \times 10^{-2}$ & $5.99 \times 10^{-2}$ & $6.14 \times 10^{-2}$ & $\sim 2 \times 10^{-6}$ & $7.07 \times 10^{-2}$\\
+2.75 & $4.34 \times 10^{-2}$ & $3.66 \times 10^{-2}$ & $3.73 \times 10^{-2}$ & $\sim 2 \times 10^{-6}$ & $4.44 \times 10^{-2}$\\
+3.75 & $3.18 \times 10^{-2}$ & $2.68 \times 10^{-2}$ & $2.71 \times 10^{-2}$ & $\sim 2 \times 10^{-6}$ & $3.24 \times 10^{-2}$\\
+4.75 & $2.51 \times 10^{-2}$ & $2.00 \times 10^{-2}$ & $2.02 \times 10^{-2}$ & $\sim 2 \times 10^{-6}$ & $2.55 \times 10^{-2}$\\
+\bottomrule
+\end{tabular}
+\caption{Radial deficit profile $\delta(r)/R_0$ from the
+cascade simulation, $L = 40$, $E_0 = 1.5$. The single throttle
+adds a positive correction to the linear profile in the
+direction of the GR target. The double throttle collapses to
+near zero deficit beyond the immediate neighbourhood of the
+sink, illustrating cascade freezing.}
+\label{tab:cascade}
+\end{table}
+
+\subsection{Verifying the Schwarzschild form}
+
+The simulation underestimates the continuum deficit by a
+common lattice factor at $L = 40$ (the same finite-volume
+under-resolution observed in Paper~I, Sec.~6.2). The clean
+test of the analytic derivation is therefore not single-vs-GR
+in absolute terms, but single-vs-Schwarzschild evaluated at
+the lattice's effective $x_{\rm eff} = \delta_{\rm linear}/R_0$.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ccccr}
+\toprule
+$r$ & $x_{\rm eff} = \delta_{\rm lin}/R_0$
+& $1 - \sqrt{1 - 2 x_{\rm eff}}$ (predicted)
+& single sim
+& discrepancy\\
+\midrule
+1.75 & $0.05993$ & $0.06184$ & $0.06142$ & $-0.7\%$\\
+2.75 & $0.03665$ & $0.03735$ & $0.03725$ & $-0.3\%$\\
+3.75 & $0.02676$ & $0.02713$ & $0.02708$ & $-0.2\%$\\
+4.75 & $0.01998$ & $0.02018$ & $0.02016$ & $-0.1\%$\\
+\bottomrule
+\end{tabular}
+\caption{Test of the analytic Schwarzschild form against the
+single-throttle simulation. We compute the predicted
+$1 - \sqrt{1 - 2x_{\rm eff}}$ using the lattice-measured
+deficit of the linear simulation as the effective $x$. The
+agreement with the single-throttle simulation is at the
+sub-percent level across the bulk fit window.}
+\label{tab:schw_match}
+\end{table}
+
+The agreement is sub-percent. The analytic derivation of
+Sec.~\ref{sec:derivation} is verified by the simulation
+within the lattice resolution.
+
+\subsection{Cascade collapse under double throttle}
+
+The double throttle entries in Table~\ref{tab:cascade} are
+essentially zero (modulo numerical noise) beyond the
+immediate vicinity of the sink. This is not numerical
+failure: it is the physical pathology of the double throttle.
+When $R$ drops near the sink, both endpoints of the adjacent
+links carry low-bandwidth gates, the flux is suppressed
+quadratically, and the cascade freezes. The sink cannot drain
+its second-nearest neighbours efficiently because the link to
+the first-nearest neighbour --- which has low bandwidth ---
+is itself throttled. The result is an artificial horizon at
+the first shell.
+
+The single throttle does not have this property: only the
+source endpoint is throttled, so a low-bandwidth source can
+still receive freely from a high-bandwidth neighbour, and the
+cascade propagates. The simulation thus distinguishes the two
+prescriptions on a structural basis, supporting the
+single-throttle as the physically natural choice.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig4_iterative_cascade.pdf}
+\caption{Cascade simulation. Left: log--log radial deficit
+profile for the linear, single-throttle, and double-throttle
+prescriptions, against the Schwarzschild target. The double
+throttle freezes near the sink. Right: the second-order
+correction added by each throttle, normalised to the
+expected GR correction (dashed: 1, exact GR match;
+dotted: 2, the analytic prediction for the double throttle in
+the continuum). The single throttle approaches unity at small
+$x$ (within lattice resolution).}
+\label{fig:cascade}
+\end{figure}
+
+\section{Calibration vs.\ prediction}
+\label{sec:cal-vs-pred}
+
+We separate clearly:
+
+\textbf{Calibrations.}
+\begin{itemize}
+\item Bandwidth identification \eqref{eq:tau_def}: an
+operational hypothesis, not a derivation.
+\item Single-throttle prescription \eqref{eq:throttle}: a
+physically motivated choice (source-receiver asymmetry), not a
+derivation.
+\item $M_{\rm eff} / R_0 \leftrightarrow 2 G M_{\rm phys} / c^2$:
+fixes one combination of lattice unit and rest level by
+demanding the leading-order deficit match the Newtonian
+potential. Inherited from Paper~I.
+\end{itemize}
+
+\textbf{Derived from these inputs.}
+\begin{itemize}
+\item The full functional form $R/R_0 = \sqrt{1 - 2GM/c^2 r}$,
+to all orders in $GM/c^2 r$ in the continuum limit, follows
+from the steady-state of the throttled rule, the spherical
+symmetry, and the source-strength match.
+\item The location of the bandwidth horizon, $r = 2GM/c^2$,
+is the locus where $R = 0$ in the analytic solution.
+\item The flux conservation law $\kappa E_0 = 2 \pi \alpha
+R_0 \beta$ relating source strength to the integrated flux
+across any sphere outside the sink.
+\end{itemize}
+
+\section{What this paper does not do}
+\label{sec:not}
+
+We do not derive the Schwarzschild form for non-spherical or
+non-static configurations. The derivation in
+Sec.~\ref{sec:derivation} uses spherical symmetry and steady
+state. Rotating, oscillating, or multi-source configurations
+are not covered.
+
+We do not derive the spatial part of the Schwarzschild metric.
+The derivation gives the $g_{00}$ factor only. The radial
+component, the angular components, the propagation of light
+through the modified bandwidth field, and any other component
+of the metric structure are not addressed.
+
+We do not derive the Einstein field equations. The dynamical
+content of GR --- the Bianchi identities, the matter coupling,
+the propagation of gravitational waves --- is outside the
+scope of this paper.
+
+We do not derive the single-throttle prescription itself. It is
+a physically motivated choice within a family of throttle
+prescriptions, justified by the source-receiver asymmetry. The
+rule of Paper~I as written admits multiple throttle
+prescriptions; the result of this paper is conditional on the
+single-throttle choice.
+
+We do not address kinematic time dilation. The motion of a
+localised configuration across the substrate, and any
+relationship to the special-relativistic Lorentz factor, is
+the subject of Paper~III.
+
+We do not derive Newton's $G$ or the speed of light $c$.
+They enter as calibrations, exactly as in Paper~I.
+
+\section{Relation to existing work}
+\label{sec:related}
+
+\textbf{Weak-field general relativity.} The match
+\eqref{eq:dtau_schw} reproduces the Schwarzschild
+time-dilation factor of weak-field GR at all orders in
+$GM/c^2 r$. The match is calibration-mediated at leading
+order; the higher orders follow from the bandwidth-throttled
+cascade in the rule.
+
+\textbf{Emergent gravity programmes}
+\cite{verlinde2011,padmanabhan2010,jacobson1995}. These
+derive gravitational behaviour from thermodynamic or
+information-theoretic arguments on horizons. The present
+paper operates at a different level: an explicit local rule
+with an explicit throttle prescription, rather than a
+coarse-grained thermodynamic identity. The two are not in
+competition; they target different levels of description.
+
+\textbf{Lattice and discrete models of gravity}
+\cite{benzi1992,wolfram2002,thooft2016}. Lattice fluid models
+recover continuum hydrodynamic equations through similar
+steady-state and conservation arguments. The present paper
+differs in two respects: the bandwidth identification
+\eqref{eq:tau_def} maps the substrate's flux activity onto
+proper time, which is, to our knowledge, novel within the
+local-rule programme; and the single-throttle modification of
+the link rule is the specific structural ingredient that
+produces $\nabla^2(R^2) = 0$ rather than $\nabla^2 R = 0$,
+upgrading Newton to weak-field Schwarzschild.
+
+\section{Code and data availability}
+\label{sec:code}
+
+The Python script \texttt{code/iterative\_cascade\_test.py}
+implements the rule of Paper~I with three flux prescriptions
+(none, single throttle, double throttle) and produces the
+radial profiles of Sec.~\ref{sec:numerical}. The script is
+pure-numpy and depends on no external simulation framework.
+The repository is available at
+\url{https://github.com/stanislasdewavrin/DDD-Paper-2-Schwarzschild}.
+
+The numerical data of Tables~\ref{tab:cascade} and
+\ref{tab:schw_match} are stored in
+\texttt{data/iterative\_cascade\_L40.json}.
+
+\section{Open questions}
+\label{sec:open}
+
+\paragraph{Origin of the throttle prescription.}
+The single-throttle is selected by physical motivation
+(source-receiver asymmetry of flux exchange) but not
+derived from the rule of Paper~I as written. A microscopic
+argument that selects the single throttle, or that selects a
+specific asymmetry between source and receiver from a deeper
+property of the rule, would close the most important
+remaining gap.
+
+\paragraph{Origin of the bandwidth identification.}
+The identification of effective proper time with available
+bandwidth is operational. A microscopic argument that
+selects the linear dependence \eqref{eq:tau_def} from the
+rule, or that establishes proper time as a derived rather
+than an adopted quantity, would strengthen the construction.
+
+\paragraph{Beyond the linear regime.} When a node's reserve
+approaches zero (near the bandwidth horizon $r = \beta$), the
+rate-limiter $\beta_i$ of Paper~I becomes active and the rule
+departs from the linearised regime. The physical
+interpretation of the horizon, and the behaviour of the rule
+in its immediate vicinity, are not addressed in this paper.
+
+\paragraph{Spatial part of the metric.}
+The bandwidth identification gives $g_{00}$. Whether the
+substrate also produces a consistent spatial metric, and
+whether photon trajectories computed from the bandwidth field
+reproduce the deflection angle $4GM/c^2 b$ of weak-field GR,
+is the subject of Paper~IV.
+
+\paragraph{Back-reaction.} The probe approximation ignores
+the test configuration's contribution to the deficit field.
+The full self-consistent treatment is also left to Paper~IV.
+
+\section{Outlook}
+\label{sec:outlook}
+
+\begin{enumerate}
+\item Paper~III --- discrete-time response, inertial effects,
+and kinematic clock-rate suppression of moving configurations,
+with cosmogenesis from a single founding impulse as a
+corollary of the no-deadlock property of the rule.
+\emph{Speculative.}
+\item Paper~IV --- predictions and tests of the gravitational
+sector beyond the static spherically symmetric scenario:
+photon deflection, compact-source phenomenology near the
+bandwidth horizon, self-consistent feedback, and laboratory
+bounds. \emph{Mixed.}
+\item Paper~V --- the gauge sector and emergent
+electromagnetism. \emph{Speculative; coefficients
+uncalibrated.}
+\item Further exploratory notes (Papers~VI and onward)
+address coupling, cosmology, quantum phenomenology, particle
+structure, and condensed-matter analogies. \emph{Increasingly
+speculative.}
+\end{enumerate}
+
+The present paper claims one structural result: under the
+single-throttle modification of the rule of Paper~I and the
+bandwidth identification, the static spherically symmetric
+deficit field is the Schwarzschild time-dilation factor at
+all orders in the continuum limit. The result is conditional
+on the throttle prescription and on the bandwidth
+identification, both of which are made explicit. The rest is
+what one might do with such a rule.
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}
+ade explicit. The rest is
+what one might do with such a rule.
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}
+
+\end{document}

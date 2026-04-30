@@ -1,0 +1,13 @@
+{
+  "tau_Noeud_assumed_Planck": 5.391246446661944e-44,
+  "kappa_Planck_units": 1.0,
+  "alpha_diff_predicted": 0.039788735772973836,
+  "J_predicted": 10.904978317853313,
+  "kappa_over_J_target": 0.09170123688946993,
+  "alpha_G_observed": 5.906149417423905e-39,
+  "alpha_G_DDD_predicted_Dirac": 7.496535672818183e-45,
+  "ratio_predicted_observed": 5749.222908680655,
+  "G_running_AS": "negligible at all sub-Planck scales",
+  "verdict": "G ontologically grounded but not derived at 0%",
+  "remaining_calibration": "value of G_Newton or m_p still external"
+}

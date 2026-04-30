@@ -1,0 +1,15 @@
+{
+  "L_lattice": 48,
+  "N_ticks": 3000,
+  "kappa": 0.05,
+  "alpha": 1.0,
+  "F_max": 0.5,
+  "A_fit": -2.71657984e-316,
+  "A_err": 7.191949523459089e-16,
+  "A_rel_precision": -2.6474280009746774e+300,
+  "G_eff": -2.2638e-319,
+  "G_eff_rel_precision": -2.647437052998251e+300,
+  "chi2_per_dof": 0.0,
+  "experimental_precision": 2.2e-05,
+  "ratio_sim_vs_exp": null
+}

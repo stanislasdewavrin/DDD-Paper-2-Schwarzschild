@@ -1,0 +1,188 @@
+{
+  "cases": [
+    {
+      "A": 0.01,
+      "b": 5.0,
+      "theta_sim": 0.004018675830568058,
+      "theta_geo": 0.002,
+      "theta_full_GR": 0.004,
+      "deviation_pct_vs_full_GR": 0.4668957642014505,
+      "ticks": 10001
+    },
+    {
+      "A": 0.01,
+      "b": 10.0,
+      "theta_sim": 0.002004285740579613,
+      "theta_geo": 0.001,
+      "theta_full_GR": 0.002,
+      "deviation_pct_vs_full_GR": 0.21428702898064825,
+      "ticks": 10001
+    },
+    {
+      "A": 0.01,
+      "b": 20.0,
+      "theta_sim": 0.0010003608063734065,
+      "theta_geo": 0.0005,
+      "theta_full_GR": 0.001,
+      "deviation_pct_vs_full_GR": 0.036080637340644636,
+      "ticks": 10001
+    },
+    {
+      "A": 0.01,
+      "b": 50.0,
+      "theta_sim": 0.00039819578739383726,
+      "theta_geo": 0.0002,
+      "theta_full_GR": 0.0004,
+      "deviation_pct_vs_full_GR": 0.45105315154069053,
+      "ticks": 10001
+    },
+    {
+      "A": 0.05,
+      "b": 5.0,
+      "theta_sim": 0.020481887800214166,
+      "theta_geo": 0.01,
+      "theta_full_GR": 0.02,
+      "deviation_pct_vs_full_GR": 2.4094390010708304,
+      "ticks": 10002
+    },
+    {
+      "A": 0.05,
+      "b": 10.0,
+      "theta_sim": 0.010116478456351578,
+      "theta_geo": 0.005,
+      "theta_full_GR": 0.01,
+      "deviation_pct_vs_full_GR": 1.1647845635157776,
+      "ticks": 10001
+    },
+    {
+      "A": 0.05,
+      "b": 20.0,
+      "theta_sim": 0.0050251612346168635,
+      "theta_geo": 0.0025,
+      "theta_full_GR": 0.005,
+      "deviation_pct_vs_full_GR": 0.5032246923372674,
+      "ticks": 10001
+    },
+    {
+      "A": 0.05,
+      "b": 50.0,
+      "theta_sim": 0.0019945992313855996,
+      "theta_geo": 0.001,
+      "theta_full_GR": 0.002,
+      "deviation_pct_vs_full_GR": 0.27003843072002237,
+      "ticks": 10001
+    },
+    {
+      "A": 0.1,
+      "b": 5.0,
+      "theta_sim": 0.04198778532804015,
+      "theta_geo": 0.02,
+      "theta_full_GR": 0.04,
+      "deviation_pct_vs_full_GR": 4.969463320100374,
+      "ticks": 10005
+    },
+    {
+      "A": 0.1,
+      "b": 10.0,
+      "theta_sim": 0.02047679903084958,
+      "theta_geo": 0.01,
+      "theta_full_GR": 0.02,
+      "deviation_pct_vs_full_GR": 2.383995154247899,
+      "ticks": 10002
+    },
+    {
+      "A": 0.1,
+      "b": 20.0,
+      "theta_sim": 0.010109462404168462,
+      "theta_geo": 0.005,
+      "theta_full_GR": 0.01,
+      "deviation_pct_vs_full_GR": 1.09462404168462,
+      "ticks": 10001
+    },
+    {
+      "A": 0.1,
+      "b": 50.0,
+      "theta_sim": 0.003998294240175668,
+      "theta_geo": 0.002,
+      "theta_full_GR": 0.004,
+      "deviation_pct_vs_full_GR": 0.042643995608305195,
+      "ticks": 10001
+    },
+    {
+      "A": 0.2,
+      "b": 5.0,
+      "theta_sim": 0.08847085665409382,
+      "theta_geo": 0.04,
+      "theta_full_GR": 0.08,
+      "deviation_pct_vs_full_GR": 10.588570817617274,
+      "ticks": 10020
+    },
+    {
+      "A": 0.2,
+      "b": 10.0,
+      "theta_sim": 0.0419730117265853,
+      "theta_geo": 0.02,
+      "theta_full_GR": 0.04,
+      "deviation_pct_vs_full_GR": 4.932529316463256,
+      "ticks": 10005
+    },
+    {
+      "A": 0.2,
+      "b": 20.0,
+      "theta_sim": 0.020460617017488282,
+      "theta_geo": 0.01,
+      "theta_full_GR": 0.02,
+      "deviation_pct_vs_full_GR": 2.303085087441408,
+      "ticks": 10002
+    },
+    {
+      "A": 0.2,
+      "b": 50.0,
+      "theta_sim": 0.008033275345320123,
+      "theta_geo": 0.004,
+      "theta_full_GR": 0.008,
+      "deviation_pct_vs_full_GR": 0.41594181650153084,
+      "ticks": 10001
+    },
+    {
+      "A": 0.5,
+      "b": 5.0,
+      "theta_sim": 0.2662364653603005,
+      "theta_geo": 0.1,
+      "theta_full_GR": 0.2,
+      "deviation_pct_vs_full_GR": 33.11823268015024,
+      "ticks": 10182
+    },
+    {
+      "A": 0.5,
+      "b": 10.0,
+      "theta_sim": 0.11360572716369799,
+      "theta_geo": 0.05,
+      "theta_full_GR": 0.1,
+      "deviation_pct_vs_full_GR": 13.605727163697983,
+      "ticks": 10032
+    },
+    {
+      "A": 0.5,
+      "b": 20.0,
+      "theta_sim": 0.05307454206589317,
+      "theta_geo": 0.025,
+      "theta_full_GR": 0.05,
+      "deviation_pct_vs_full_GR": 6.149084131786331,
+      "ticks": 10007
+    },
+    {
+      "A": 0.5,
+      "b": 50.0,
+      "theta_sim": 0.02036458508562377,
+      "theta_geo": 0.01,
+      "theta_full_GR": 0.02,
+      "deviation_pct_vs_full_GR": 1.8229254281188454,
+      "ticks": 10001
+    }
+  ],
+  "fit_at_A0.05": {
+    "slope": -1.0112089123401278,
+    "slope_extended": -1.018803582583031
+  }
+}
