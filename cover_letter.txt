@@ -1,0 +1,79 @@
+Cover Letter --- submission of:
+"Discrete Drainage Dynamics II:
+Cascade-Throttled Drainage and
+a Schwarzschild-Like Time-Dilation Factor"
+
+Stanislas de Wavrin
+Independent researcher
+dewavrin.iphone@gmail.com
+2 May 2026
+
+To the Editor,
+
+I would like to submit the enclosed manuscript for consideration. Below
+I summarise the contribution and why I believe it is timely.
+
+==========================================================================
+SUMMARY
+==========================================================================
+
+Building on the static profile of Paper I, this paper introduces the cascade-throttled mobility mu(R) and shows that the resulting steady-state clock-rate factor matches the leading expansion of the Schwarzschild factor sqrt(1 - 2GM/(r c^2)) to within numerical precision. Notably, the post-Newtonian correction emerges from the self-coupling of the field's own back-reaction --- the DDD analogue of gravity gravitating itself.
+
+==========================================================================
+WHY THIS MATTERS
+==========================================================================
+
+The Schwarzschild factor is the simplest visible signature of general relativity beyond Newton. Reproducing it from a discrete local rule on a fixed graph is a non-trivial consistency test for any emergent-gravity programme. The self-coupling that produces the correction is a structural feature of the drainage rule, not a fitted parameter.
+
+==========================================================================
+NOVELTY
+==========================================================================
+
+Cascade-throttled mobility mu(R). Numerical demonstration of the leading post-Newtonian correction. Analytical derivation of the clock-rate factor in the weak-field limit. Comparison with Regge-calculus and CDT approaches.
+
+==========================================================================
+SUBMISSION STRATEGY
+==========================================================================
+
+This manuscript is Paper II of a planned ten-paper series on
+Discrete Drainage Dynamics (DDD). The series is organised so each
+paper has a clean, falsifiable claim of its own; the present paper
+can be read independently of the others, with explicit cross-
+references to its companions where needed.
+
+I am happy to follow whichever route the editor prefers: standalone
+submission of the present paper, or coordinated submission as part
+of the series.
+
+==========================================================================
+DATA AND CODE
+==========================================================================
+
+All simulation code, data, and analysis scripts accompanying this
+paper are available in the supplementary material and will be
+released on the author's public repository upon acceptance.
+
+==========================================================================
+SUGGESTED REFEREES
+==========================================================================
+
+[To be filled by the author at the time of submission, with
+2--3 referees working in the relevant area.]
+
+==========================================================================
+DECLARATIONS
+==========================================================================
+
+  - The author declares no competing financial interests.
+  - The work has not been previously published, and is not under
+    consideration elsewhere.
+  - All simulations were performed by the author on a personal
+    computer.
+  - The author is an independent researcher with no institutional
+    affiliation.
+
+I look forward to your feedback.
+
+With kind regards,
+
+Stanislas de Wavrin
