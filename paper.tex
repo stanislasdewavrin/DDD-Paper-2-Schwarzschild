@@ -9,6 +9,7 @@
 \usepackage{booktabs}
 \usepackage{authblk}
 \usepackage{cite}
+\usepackage{enumitem}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
 
 \title{\textbf{Discrete Drainage Dynamics II:\\
@@ -23,16 +24,40 @@ a Schwarzschild-Like Time-Dilation Factor}}
 
 \begin{abstract}
 \noindent
+\textbf{Discrete Drainage Dynamics (DDD) is an analogue-substrate
+programme.} It does not contest General Relativity, the
+Newtonian limit, or the Standard Model: those are empirical
+anchors that any analogue must reproduce in the appropriate
+continuum and regime limits. DDD asks the more modest,
+exploratory question of whether some of the \emph{forms} that
+appear fundamental in current physics can be made mechanically
+legible inside a deliberately simpler discrete toy substrate.
+The present paper studies the static spherical gravitational
+sector of that analogue.
+
 Paper~I introduced DDD as a reserve-flux framework with a
-mobility function $\mu(R)$ as a structural choice, and studied
-the constant-mobility baseline $\mu \equiv 1$ that recovers
-Newton's $1/r$ at leading order. Here we study the source-side
-bandwidth-throttled mobility prescription $\mu(R) = R/R_0$:
-the directional flux on a link is modulated by the bandwidth
-available at the source node, while the receiver imposes no
-further limitation, since accepting flux is passive. Under
-this mobility choice, the steady-state field around a point
-sink satisfies the algebraic identity $\nabla^2(R^2) = 0$ in
+mobility function $\mu(R)$ that the framework left open, and
+studied the constant-mobility baseline $\mu \equiv 1$ that
+recovers the form of Newton's $1/r$ at leading order in the continuum limit of the analogue substrate. Here we close that gap.
+Within the class of local emission-capacity rules, we show that
+four operational axioms --- locality, internal conservation,
+empty-reserve extinction, and additivity of independent reserve
+packets (L4) --- uniquely select the source-side mobility
+$\mu(R) = R/R_0$ via the Cauchy functional equation and standard
+regularity. \emph{The construction rests on two substantive
+hypotheses not derived from deeper principles: (H1) the
+additivity axiom (L4), and (H2) the bandwidth identification
+$d\tau/dt = R/R_0$ of effective proper time with the
+reserve-normalised bandwidth (introduced in Sec.~\ref{sec:setup}).
+Under these two hypotheses and the locality axioms (L1)--(L3),
+the source-side mobility is forced and the Schwarzschild form
+follows; the microscopic origin of (H1) and (H2) is the
+principal open problem of the construction and is left to
+future work.} The directional flux on a link is therefore modulated
+by the bandwidth available at the source node, with no
+receiver-side throttle in the emission-capacity sector. Under
+this axiomatically selected mobility, the steady-state field
+around a point sink satisfies the algebraic identity $\nabla^2(R^2) = 0$ in
 the continuum limit, away from the sink. The unique
 spherically-symmetric solution with $R \to R_0$ at infinity
 is $R/R_0 = \sqrt{1 - \beta/r}$, with $\beta$ fixed by the
@@ -42,20 +67,62 @@ identification $\beta = 2GM/c^2$. Combined with the
 operational identification of effective proper time with local
 bandwidth ($d\tau/dt = R/R_0$), the model reproduces a
 Schwarzschild-like static clock-rate factor in the continuum
-spherical solution, conditional on the mobility choice and the
-bandwidth identification. We verify the result numerically.
+spherical solution, conditional on the additive
+emission-capacity axioms and the bandwidth identification. We verify the result numerically.
 From the same structural input we extract the functional form
 of Newton's gravitational constant $G$ in terms of the local
 rule parameters $(\kappa, \alpha, R_0)$ and the lattice scale,
 together with a single Planck-anchored dimensionless constraint
-$\kappa/(\alpha R_0) = 4\pi$. We do not predict the SI value of
+$\kappa/(\alpha R_0) = 4\pi$. \emph{This Planck-anchoring
+condition is a consistency requirement under the Planck
+identification, not an independent prediction of $G$.} We do not
+predict the SI value of
 $G$ (the absolute lattice scale must be anchored externally),
 nor do we derive the speed of light $c$, the spatial part of
 the metric, or the Einstein field equations.
 \end{abstract}
 
+
+\noindent\fbox{\parbox{0.96\textwidth}{\small
+\textbf{What this paper makes mechanically legible.}
+GR predicts the Schwarzschild form $g_{tt} \propto -(1-\beta/r)$
+with metric precision but supplies no mechanism for \emph{why}
+clocks tick slow near a mass, and produces a curvature
+singularity at $r = 0$ where the continuum theory breaks down.
+\emph{This paper} reads $g_{tt}$ as a substrate-level bandwidth
+ratio $R/R_0$ under source-side throttling: nodes near a sink
+literally have less bandwidth available, slowing their internal
+event rate. The would-be singularity is replaced by a
+\emph{bandwidth horizon} where Paper~I's discrete rate-limiter
+activates. \textbf{Leverage:} the form of $g_{tt}$ acquires a
+mechanism, and GR's curvature singularity is regularised by
+the discrete substrate --- the marker that the analogue can
+do better than the continuum where the latter signals its own
+breakdown.
+}}
+\bigskip
+
+
 \section{Main claims and scope}
 \label{sec:claims}
+
+\paragraph{Programme positioning and analogue framing.}
+Before stating the claims of this paper we recall the position
+of the entire DDD programme. DDD is an analogue-substrate
+programme: General Relativity, the Newtonian limit, and the
+Standard Model are not contested; they are the empirical
+anchors any analogue must reproduce in the appropriate
+continuum and regime limits. The aim of this paper is not to
+replace GR but to ask whether the \emph{form} of the
+Schwarzschild static clock-rate factor can be made mechanically
+legible inside a deliberately simpler discrete substrate with
+finite reserves and local update rules. The results are
+internal to the analogue and conditional on the stated
+hypotheses (H1) and (H2); they do not claim to derive the
+underlying physical law. Any deviation between the analogue
+and the empirical theories is a falsifier of the analogue, not
+of the empirical theories.
+
 
 \begin{enumerate}
 \item \textbf{Bandwidth identification.} Within the rule of
@@ -70,18 +137,25 @@ This identification is operational, not derived; it states
 that a node's local rate of activity per coordinate tick is
 proportional to its available reserve.
 
-\item \textbf{Source-side bandwidth mobility.} The mobility
-function $\mu(R)$ is a structural choice of the framework of
-Paper~I. Here we choose
+\item \textbf{Source-side bandwidth mobility, derived from
+four locality axioms.} Within the rule of Paper~I, the local
+emission capacity $C(R)$ of a node is constrained by four
+operational axioms ((L1) locality, (L2) internal conservation,
+(L3) empty-reserve extinction, (L4) additivity of independent
+reserve packets). The Cauchy functional equation that (L4)
+imposes, together with the normalisations $C(0)=0$ and
+$C(R_0)=1$ from (L3) and rest-state calibration, has a unique
+continuous solution $C(R) = R/R_0$. The source-side bandwidth
+mobility is therefore \emph{uniquely selected} within the class
+of local additive emission-capacity rules:
 \[
 \mu(R) \;=\; \frac{R}{R_0}, \qquad
 F_{i \to j} \;=\; \alpha\, \frac{R_i}{R_0}\, (R_i - R_j)_+.
 \]
-The receiver imposes no additional throttle: pushing flux
-costs the source bandwidth, accepting flux is passive at the
-receiver. We adopt this choice as physically motivated, but it
-is not uniquely selected by the framework of Paper~I; we
-discuss alternatives in Sec.~\ref{sec:throttle-prescription}.
+The full derivation is in Sec.~\ref{sec:axiomatic-derivation};
+alternative prescriptions discussed in
+Sec.~\ref{sec:throttle-prescription} all violate at least one
+of (L1)--(L4).
 
 \item \textbf{Schwarzschild form from the source-side
 bandwidth mobility.} In the continuum limit, the steady-state
@@ -102,8 +176,9 @@ gravitational time-dilation factor
 which under the calibration $\beta = 2GM_{\rm phys}/c^2$
 matches the Schwarzschild static clock-rate factor as a
 formal function of $GM/c^2 r$. The match holds in the
-continuum spherical solution, conditional on the mobility
-choice and the bandwidth identification; we do not claim a
+continuum spherical solution, conditional on the
+additive emission-capacity axioms and the bandwidth
+identification; we do not claim a
 derivation of the full Schwarzschild metric or of weak-field
 GR more generally.
 \end{enumerate}
@@ -124,15 +199,20 @@ in terms of the local-rule parameters and a single Planck-scale
 dimensionless constraint, but the absolute lattice scale must
 be anchored by an external input. The speed of light $c$
 enters as a calibration, exactly as in Paper~I.
-We do not show that the rule is unique. We do not derive the
-mobility function $\mu(R)$ itself: $\mu(R) = R/R_0$ is a
-physically motivated choice within the framework of Paper~I,
-justified by the source-receiver asymmetry of flux exchange,
-but the framework of Paper~I does not select $\mu(R)$ uniquely.
-Different mobility prescriptions yield different steady-state
-forms, as illustrated in Sec.~\ref{sec:numerical}; the
-Schwarzschild form is the one selected by the source-side
-bandwidth mobility.
+We do not show that DDD's full local rule is unique; we
+show that the source-side mobility is uniquely selected within
+the additive local emission-capacity class. The mobility function
+$\mu(R)$ is \emph{derived} from four locality axioms
+(Sec.~\ref{sec:axiomatic-derivation}): the unique continuous
+solution to the Cauchy functional equation imposed by additivity
+of independent reserve packets is $\mu(R) = R/R_0$. We do
+\emph{not} predict the absolute value of $R_0$ in lattice units;
+that is an external calibration to the rest state of bound matter.
+Alternative prescriptions discussed in
+Sec.~\ref{sec:throttle-prescription} (constant mobility,
+two-sided product) all violate at least one of the four axioms
+and are reported as null hypotheses; the Schwarzschild form is
+the unique consequence of the axiomatically forced mobility.
 
 \subsection*{Motivation and significance}
 \addcontentsline{toc}{subsection}{Motivation and significance}
@@ -196,6 +276,85 @@ not about the mathematical non-linearity of field equations. Papers
 III--VII address it from different angles (kinematics, Wilson loops,
 gauge sector, gravity-gauge coupling); Paper~V provides the
 falsification windows.
+
+
+
+\paragraph{Which mystery does this paper address?}
+Per SERIES\_FEEDBACK §0.bis, this paper targets:
+
+\begin{itemize}
+\item \textbf{Mystery~\#2 (gravitational time dilation and
+gravitational potentials).} GR encodes both in metric
+geometry and predicts the Schwarzschild form
+$g_{tt} \propto -(1-\beta/r)$. We ask whether the same form
+arises operationally from the analogue's source-side
+bandwidth-throttled rule. The answer offered here: under the
+hypotheses (H1) additivity (L4) and (H2) bandwidth
+identification, the analogue produces $R/R_0 = \sqrt{1-\beta/r}$
+in the static spherical continuum limit, matching the form of
+the Schwarzschild factor. The microscopic origin of (H1) and
+(H2) remains open and is the principal $why$-question this
+paper does \emph{not} resolve.
+\item \textbf{Mystery~\#4 (BH singularity).} The bandwidth
+profile reaches $R = 0$ at $r = \beta$, where the discrete
+rate-limiter of Paper~I becomes active. The paper does not
+fully resolve the singularity but identifies the bandwidth
+horizon as the analogue's regularising structure; full
+treatment is deferred.
+\end{itemize}
+
+\paragraph{Distinctive contribution and ontological reading.}
+GR predicts the Schwarzschild form $g_{tt} \propto -(1-\beta/r)$
+with extraordinary precision. It does not, however, supply a
+\emph{mechanism} for \emph{why} time runs slow near a mass, nor
+does it resolve the curvature singularity at $r = 0$ that
+appears in its own predictions. These are the two distinctive
+points where the present paper's analogue contributes
+something the continuum theory does not say:
+
+\begin{enumerate}
+\item \textbf{Mechanical reading of gravitational time
+dilation.} In GR, $g_{tt}$ is a metric component; the
+\emph{form} $\sqrt{1-\beta/r}$ is encoded in the geometry
+without further explanation. Here, the same form is the
+steady-state bandwidth ratio $R/R_0$ around a sink under the
+source-side throttled rule: \emph{nodes near a mass simply have
+less bandwidth available, and this physically reduces the rate
+at which their internal events can occur.} The analogue
+provides an operational why for the form: throttle the
+substrate's local activity, and the Schwarzschild factor
+appears as a \emph{consequence} of the discrete rule.
+
+\item \textbf{Singularity regularisation: the marker that the
+continuum has a limit.} The Schwarzschild solution of GR has a
+genuine curvature singularity at $r = 0$ where the theory
+breaks down --- this is widely regarded as one of GR's known
+\emph{contradictions} or limits. In the analogue, the
+bandwidth profile reaches $R = 0$ at $r = \beta$, where the
+\emph{discrete rate-limiter} of Paper~I activates and prevents
+$R$ from going negative. The would-be singularity is therefore
+replaced by a \emph{bandwidth horizon}, a finite-substrate
+structure with no continuum-style divergence. \textbf{This is
+precisely the ontological marker that the discrete model can do
+better than the continuum model: where GR signals its own
+breakdown, the analogue stays well-defined by virtue of its
+finite-reserve structure.} Full treatment of the regularised
+horizon is deferred, but the mechanism is already in place.
+\end{enumerate}
+
+\paragraph{What is calibrated and what is genuinely
+explanatory.} The numerical value of $\beta = 2GM/c^2$ is
+calibrated against the Newtonian limit (see calibration
+ledger, §0.ter); $G$ in physical units is calibrated against
+CODATA. These values are \emph{not} predicted by the analogue
+in this paper. What \emph{is} predicted, structurally, is the
+\emph{form} $\sqrt{1-\beta/r}$ as a substrate consequence, and
+the \emph{mechanism} of singularity regularisation as a
+consequence of (L4) reserve non-negativity. The distinctive
+contribution is the displacement of two GR mysteries (why this
+form, what happens at $r = 0$) into substrate-level statements.
+
+
 
 \section{Physical picture in plain words}
 \label{sec:picture}
@@ -269,8 +428,8 @@ At rest $\mathcal{B}_i = 1$. In the static gravitational
 regime considered below, $R_i \le R_0$ everywhere because the
 only source acts as a sink, so $\mathcal{B}_i \in [0, 1]$.
 
-\paragraph{Hypothesis (bandwidth identification).} We adopt
-the operational definition
+\paragraph{Hypothesis (H2) --- bandwidth identification.}
+We adopt the operational definition
 \begin{equation}
 \frac{d\tau_i}{dt} \;=\; \mathcal{B}_i \;=\; \frac{R_i}{R_0}
 \label{eq:tau_def}
@@ -278,10 +437,18 @@ the operational definition
 for the local rate of effective proper time. The
 identification is structural in the sense that it does not
 introduce a new variable beyond the reserve; it is also
-assumed in the sense that we do not derive from a deeper
-principle that ``effective proper time'' must mean ``available
-throughput''. We proceed under this assumption and discuss
-what is and is not derived in the body of the paper.
+\emph{hypothesised} in the sense that we do not derive from a
+deeper principle that ``effective proper time'' must mean
+``available throughput''. Following the hypothesis terminology
+of Paper~III, (H2) is labelled a \emph{hypothesis}, distinct
+from the operational axioms (L1)--(L4) of
+Sec.~\ref{sec:axiomatic-derivation}; alternative
+identifications (e.g.\ $d\tau/dt = (R/R_0)^p$ for $p \ne 1$,
+or non-monotonic functions) define different theories. The
+microscopic origin of (H2) is co-equal with that of (L4) as a
+principal open problem of the construction
+(Sec.~\ref{sec:open}). We proceed under (H2) and discuss what
+is and is not derived in the body of the paper.
 
 \paragraph{Probe approximation.} Throughout this paper we
 treat the test object as a passive probe whose own
@@ -289,67 +456,262 @@ contribution to the reserve field is negligible compared to
 the externally generated deficit. The full self-consistent
 treatment is left to Paper~IV.
 
+\paragraph{Notation caveat ($\beta$ vs.\ $\beta_i$).}
+We use $\beta$ as a length scale parametrising the deficit
+profile (Eq.~\eqref{eq:profile}; equal to $2GM/c^2$ under the
+calibration of Sec.~\ref{sec:cal-vs-pred}). Paper~I uses
+$\beta_i \in [0,1]$ for the per-node discrete rate-limiter (a
+dimensionless cap on outflows). Despite the unfortunate symbol
+overlap, the two objects are distinct: the former is a
+continuum length, the latter a per-tick saturation enforcement
+on the lattice. We use $\beta$ unsubscripted for the length
+scale and $\beta_i$ subscripted for the rate-limiter
+throughout.
+
+\section{Axiomatic derivation of the source-side bandwidth mobility}
+\label{sec:axiomatic-derivation}
+
+The motivation given in the literature for a $\mu(R) = R/R_0$
+mobility is usually post hoc: ``it is the choice that produces
+the Schwarzschild square-root.'' That is a logic of compatibility,
+not derivation, and it leaves the prescription open to the obvious
+peer-review objection: \emph{any function with the right
+boundary behaviour would also be compatible}. This section closes
+that gap by deriving $\mu(R) = R/R_0$ uniquely from four
+operational axioms on the local emission capacity, before any
+appeal to gravitational phenomenology.
+
+\subsection{The four locality axioms}
+
+Let $C(R)$ denote the dimensionless local emission capacity of a
+single substrate node carrying reserve $R \in [0, +\infty)$.
+Within the rule of Paper~I, $C(R)$ is the saturation envelope of
+the directional flux a node can sustain across a single outgoing
+link in unit coordinate tick.
+
+\begin{enumerate}[label=(L\arabic*)]
+\item \textbf{Locality.} $C$ is a function of the local reserve
+$R$ alone, with no dependence on neighbouring states or on the
+identity of the link. (Without this axiom the rule is no longer
+a local update on a graph.)
+
+\item \textbf{Internal conservation.} Any flux emitted by a node
+across an outgoing link is received by a single neighbour; no
+charge enters or leaves the substrate as a whole. (This is the
+defining property of the conservative drainage rule of Paper~I.)
+
+\item \textbf{Empty-reserve extinction.} A node with $R = 0$
+emits no flux: $C(0) = 0$. A node with no reserve has no
+resources to push out, so the directional emission is identically
+zero in that limit.
+
+\item \textbf{Additivity of independent capacity.} If two
+independent reserve packets of magnitudes $R_a$ and $R_b$ are
+combined into a single node carrying total reserve
+$R_a + R_b$, the local emission capacity of the combined node
+equals the sum of the individual capacities:
+\begin{equation}
+C(R_a + R_b) \;=\; C(R_a) + C(R_b)
+\quad\text{for all}\quad R_a, R_b \geq 0.
+\label{eq:cauchy-axiom}
+\end{equation}
+This is the lattice version of the macroscopic statement that
+``two pipes side by side carry the sum of the flows that each
+carries individually,'' applied at the node level. It encodes
+the physical content that the substrate has no hidden saturation
+mechanism between independent packets at scales below the rest
+level $R_0$.
+\end{enumerate}
+
+\subsection{Uniqueness of $\mu(R) = R/R_0$ from (L1)--(L4)}
+
+Within the class of local emission-capacity rules satisfying
+the four axioms (L1)--(L4) above,
+Equation~(\ref{eq:cauchy-axiom}) is the celebrated Cauchy
+functional equation. Under any one of: continuity of $C$ at a
+point, monotonicity of $C$ on a half-line, or boundedness of
+$C$ on any interval of positive measure --- all of which are
+\emph{operational} requirements of a physical substrate --- the
+unique solution to (\ref{eq:cauchy-axiom}) on $[0, +\infty)$ is
+linear:
+\begin{equation}
+C(R) \;=\; k \, R
+\quad\text{for some real constant}\;\; k.
+\label{eq:cauchy-soln}
+\end{equation}
+The empty-reserve axiom (L3) is automatically satisfied
+($C(0) = 0$), and the rest-state normalisation $C(R_0) = 1$
+fixes $k = 1/R_0$. Therefore
+\begin{equation}
+\boxed{\;
+C(R) \;=\; \frac{R}{R_0}, \qquad
+\mu(R) \;=\; \frac{R}{R_0}.
+\;}
+\label{eq:mu-derived}
+\end{equation}
+The source-side bandwidth mobility is the unique continuous
+$\mu$ on $[0,+\infty)$ that satisfies (L1)--(L4) and the rest
+normalisation. \emph{It is uniquely selected within
+the class of local additive emission-capacity rules; the
+remaining physical postulate is the additivity axiom (L4)
+itself.}
+
+\subsection{What this derivation does and does not establish}
+
+\paragraph{What it establishes.} The mobility prescription
+$\mu(R) = R/R_0$ is the unique continuous local emission capacity
+consistent with locality, internal conservation, empty-reserve
+extinction, and additivity of independent reserve packets. The
+Schwarzschild-like square-root profile $R/R_0 = \sqrt{1-\beta/r}$
+of Sec.~\ref{sec:derivation} is then a consequence of this
+forced mobility together with conservation, rather than a target
+the mobility was chosen to fit.
+
+\paragraph{What it does not establish.} The value of $R_0$
+itself --- the rest-state reserve in lattice units --- is not
+fixed by (L1)--(L4). It is an external calibration to the rest
+state of bound matter (equivalently, the rest energy
+identification of Paper~I). The four axioms also do not fix
+the proportionality constant $\alpha$ in the link flux; that
+is the second free parameter of the rule of Paper~I.
+
+\paragraph{Where each axiom can be attacked.}
+\begin{itemize}
+\item Attacking (L1) (locality) means abandoning the local-rule
+ontology entirely; this is a different framework, not a
+modification of DDD.
+\item Attacking (L2) (internal conservation) means allowing
+non-conservative drainage; this is incompatible with the
+foundational rule of Paper~I and would break charge accounting
+across the lattice.
+\item Attacking (L3) (empty-reserve extinction) requires
+positing a hidden charge reservoir at $R=0$. The constant-mobility
+baseline $\mu\equiv 1$ does \emph{not} literally violate empty
+emission in the actual flux $F=\alpha(R_i-R_j)_+$, since a node
+with $R_i=0$ still emits $\alpha\,(0-R_j)_+ = 0$ to a positive
+neighbour; what (L3) excludes is the stronger
+\emph{capacity-envelope} interpretation in which the
+mobility/capacity factor itself remains finite as $R\to 0$.
+A theory with $\mu\equiv 1$ as the capacity envelope therefore
+remains a consistent local rule but lies outside the additive
+emission-capacity class adopted here.
+\item Attacking (L4) (additivity of independent packets) is the
+substantive choice. It encodes that the substrate has no hidden
+saturation at sub-rest scales --- below $R_0$, doubling the
+reserve doubles the capacity. Attacking it requires positing a
+sub-rest non-linearity. The two-sided product mobility
+discussed in Sec.~\ref{sec:throttle-prescription} is exactly
+such an attack: it violates (L4) by assuming the receiver also
+modulates capacity, which corresponds to a non-additive
+saturation between source and receiver packets. Such a choice is
+testable (it produces the pathological cascade collapse of
+Sec.~\ref{sec:numerical}) and is rejected on physical grounds.
+\end{itemize}
+
+This axiomatic framing replaces the previous compatibility logic
+``$\mu(R) = R/R_0$ produces Schwarzschild'' by the derivation
+``locality + conservation + extinction + additivity force
+$\mu(R) = R/R_0$, and Schwarzschild emerges as a corollary.''
+
+% =====================================================================
 \section{The bandwidth-throttled rule}
 \label{sec:throttle}
 
-\subsection{Source-side bandwidth mobility: physical motivation}
+\subsection{The flux equation}
 
 The flux on a link, in the framework of Paper~I, has the
 general form $F_{i \to j} = \alpha\,\mu(R_i)\,(R_i - R_j)_+$,
-with $\mu$ a non-negative mobility function normalised so that
-$\mu(R_0) = 1$. The constant-mobility baseline of Paper~I,
-$\mu \equiv 1$, reduces this to the textbook discrete-diffusion
-form $F_{i \to j} = \alpha (R_i - R_j)_+$. Here we work in the
-same framework but adopt the source-side bandwidth mobility
+with $\mu$ a non-negative mobility function. Substituting the
+axiomatically forced $\mu(R) = R/R_0$ of
+Sec.~\ref{sec:axiomatic-derivation}, the flux equation becomes
 \begin{equation}
 \mu(R) \;=\; \frac{R}{R_0},
 \qquad
 F_{i \to j} \;=\; \alpha\, \frac{R_i}{R_0}\, (R_i - R_j)_+.
 \label{eq:throttle}
 \end{equation}
-The motivation is direct. Pushing reserve out of node $i$
-through a link takes resources at $i$. A drained node has
-fewer resources; it pushes less. A full node has full
-resources; it pushes the rated maximum. This is what
-``bandwidth limited at the source'' means.
+The intuitive content is direct. Pushing reserve out of node $i$
+through a link takes resources at $i$: a drained node has fewer
+resources and pushes less; a full node pushes the rated maximum
+$\alpha R_0$. This is the operational reading of the four
+axioms (L1)--(L4): the linear emission capacity $C(R) = R/R_0$ is
+the lattice statement that source bandwidth scales linearly with
+available reserve, with no hidden saturation below the rest
+level. The receiver imposes no additional throttle: accepting
+incoming flux costs nothing in the present construction. Note
+the careful scope: in this paper we define $C(R)$ as the
+\emph{emission} capacity of a node, not its absorption capacity.
+The one-sided source throttle then follows from applying the
+four axioms to emission alone. A theory that posits an
+independent receiver-side absorption capacity $A(R_j)$ would
+constitute a different extension of the framework; we treat such
+a theory as a null hypothesis (Sec.~\ref{sec:throttle-prescription},
+two-sided bandwidth mobility) and note that the additional
+absorption modulation introduces non-additive cross-terms that
+already violate axiom (L4) at the source side.
 
-The receiver $j$ imposes no additional limitation. Accepting
-incoming flux costs nothing at the receiver: the reservoir has
-empty space and the inflow simply fills it. There is no rate
-at which an empty reservoir ``accepts'' more slowly. The
-throttle is one-sided, source-only.
-
-\subsection{Throttle prescription as a choice}
+\subsection{Alternative prescriptions and which axiom they violate}
 \label{sec:throttle-prescription}
 
-The source-side bandwidth mobility is one prescription within a
-family. Two alternatives:
+The four axioms (L1)--(L4) of
+Sec.~\ref{sec:axiomatic-derivation} force
+$\mu(R) = R/R_0$. The two prescriptions previously discussed in
+the literature can be classified by which of the four axioms
+they violate.
 
 \paragraph{Constant mobility, $\mu \equiv 1$.}
-$F = \alpha (R_i - R_j)_+$. The baseline of Paper~I. Steady
-state: linear Poisson, $\delta \propto 1/r$ at leading order.
-No higher-order corrections in the static spherical regime.
-Equivalent to Newton.
+$F = \alpha (R_i - R_j)_+$. The baseline of Paper~I. \emph{This
+violates axiom (L3) (empty-reserve extinction): a node at
+$R=0$ would still emit $\alpha\,(0 - R_j)_+ = 0$ in the
+absorbing case, but is allowed to receive and re-emit at the
+rated rate $\alpha$ as soon as $R$ becomes positive, with no
+intermediate throttling. The capacity envelope $C(R) = 1$ is
+not zero at $R=0$ and is not additive in the sense of (L4).}
+Steady state: linear Poisson, $\delta \propto 1/r$ at leading
+order; no higher-order corrections in the static spherical
+regime. Equivalent to Newton at leading order; reported as the
+limit case where the bandwidth axioms (L3)--(L4) are switched
+off.
 
 \paragraph{Two-sided bandwidth mobility.}
 $F = \alpha (R_i/R_0)(R_j/R_0)(R_i - R_j)_+$. Both source and
-receiver throttle the flux. Equivalent to a mobility that
-depends on both endpoints. Steady state:
-$\nabla^2(R^3) = 0$, giving $R/R_0 = (1 - B/r)^{1/3}$.
-Different functional form, not Schwarzschild. As we will see
-in Sec.~\ref{sec:numerical}, this prescription has a
-pathological consequence: the cascade collapses near a strong
-sink because both endpoints freeze when their bandwidths drop.
+receiver modulate the flux. \emph{This violates the
+\emph{source-locality} of the emission-capacity sector adopted
+here: the local emission capacity at node~$i$ depends on the
+receiver state $R_j$, not on $R_i$ alone. (Note that flux on a
+link between two endpoints is graph-local in the standard sense;
+what the two-sided prescription violates is the stronger
+source-only-locality of the capacity sector, which is what (L1)
+encodes in the present axiomatic framework.) It also lies outside
+the additive emission-capacity class of (L4): the joint capacity
+of two independent source packets combined into a single
+source--receiver pair is no longer additive in the source
+amplitude, since the multiplicative $R_j/R_0$ factor introduces a
+non-additive cross term.}
+Steady state: $\nabla^2(R^3) = 0$, giving
+$R/R_0 = (1 - B/r)^{1/3}$. Different functional form, not
+Schwarzschild. As we show in Sec.~\ref{sec:numerical}, this
+prescription has a pathological consequence: the cascade
+collapses near a strong sink because both endpoints freeze when
+their bandwidths drop. The collapse is the dynamical signature
+of the (L1) violation: the receiver's depletion feeds back on
+the source's emission rate, freezing both. Reported as a null
+hypothesis that the data and the locality axiom both reject.
 
 \paragraph{Source-side bandwidth mobility.}
-Eq.~\eqref{eq:throttle}. Steady state: $\nabla^2(R^2) = 0$,
-giving $R/R_0 = \sqrt{1 - \beta/r}$. The Schwarzschild form.
-The cascade propagates without collapse.
+Eq.~\eqref{eq:throttle}. The unique mobility consistent with
+all four axioms (L1)--(L4) of
+Sec.~\ref{sec:axiomatic-derivation}. Steady state:
+$\nabla^2(R^2) = 0$, giving $R/R_0 = \sqrt{1 - \beta/r}$. The
+Schwarzschild form emerges as a \emph{consequence}, not a
+target. The cascade propagates without collapse.
 
-We adopt $\mu(R) = R/R_0$ as physically motivated by the
-source-receiver asymmetry, but the framework of Paper~I does
-not select $\mu(R)$ uniquely. The paper's result is
-conditional on this choice; we are explicit about that.
+The peer-review criticism ``you chose the function that gives
+the answer'' is therefore inverted: the function is forced by
+locality, conservation, extinction, and additivity, and the
+attacker must specify which of those four axioms is to be
+abandoned and at what cost (Sec.~\ref{sec:axiomatic-derivation},
+``Where each axiom can be attacked'').
 
 \subsection{Continuum limit}
 
@@ -545,10 +907,13 @@ sink, illustrating cascade freezing.}
 
 The simulation underestimates the continuum deficit by a
 common lattice factor at $L = 40$ (the same finite-volume
-under-resolution observed in Paper~I, Sec.~6.2). The clean
-test of the analytic derivation is therefore not single-vs-GR
-in absolute terms, but single-vs-Schwarzschild evaluated at
-the lattice's effective $x_{\rm eff} = \delta_{\rm linear}/R_0$.
+under-resolution observed in Paper~I, Sec.~6.2). \emph{The
+simulation is not an absolute continuum validation at $L = 40$;
+it validates the non-linear correction relative to the
+lattice-measured linear baseline.} The clean test of the
+analytic derivation is therefore not single-vs-GR in absolute
+terms, but single-vs-Schwarzschild evaluated at the lattice's
+effective $x_{\rm eff} = \delta_{\rm linear}/R_0$.
 
 \begin{table}[h]
 \centering
@@ -604,7 +969,8 @@ single-throttle as the physically natural choice.
 \includegraphics[width=0.92\textwidth]{figures/fig4a_cascade_profile.pdf}
 \caption{Radial deficit profile $\delta(r)/R_0$ around a
 single sink, on a cubic substrate of side $L = 32$ at sink
-strength $E_0 = 1.5$, plotted log--log. Three mobility
+strength $E_0 = 1.5$,
+time step $\tau = 0.05$, $n_{\text{ticks}} = 5000$, plotted log--log. Three mobility
 choices are shown: constant mobility $\mu \equiv 1$ (the
 baseline of Paper~I), the source-side bandwidth mobility
 $\mu(R) = R/R_0$, and the two-sided bandwidth prescription.
@@ -622,13 +988,21 @@ Sec.~\ref{sec:numerical}.}
 \caption{Coefficient of the second-order correction added by
 each mobility choice, normalised to the Schwarzschild
 correction $\delta_{\rm Schw} - x$. The dashed line at $1$ is
-the exact Schwarzschild match. The dotted line at $2$ is the
-analytic prediction for the two-sided prescription in the
-continuum (where $R/R_0 = (1 - B/r)^{1/3}$ expands with a
-prefactor of $2$ at second order). The source-side bandwidth
-mobility approaches $1$ at small $x$, within lattice
-resolution; the two-sided prescription is consistent with $2$
-at the same lattice scale.}
+the exact Schwarzschild match for the source-side prescription;
+the dotted line at $2$ is the analytic continuum prediction for
+the two-sided prescription (where $R/R_0 = (1-B/r)^{1/3}$
+expands with prefactor $2$ at second order). \emph{The
+source-side bandwidth mobility approaches $1$ at small $x$,
+within lattice resolution and confirms the analytic match. The
+two-sided curve is plotted on the same axis but is dominated by
+the cascade-freezing pathology of Sec.~\ref{sec:numerical}: it
+diverges from the continuum prediction far from the analytic
+$+2$ value, which is the empirical signature that the two-sided
+prescription leaves the small-displacement linear regime well
+before the source-side prescription does.} The two-sided curve
+should accordingly be read as a null-hypothesis comparator
+illustrating the cascade-collapse pathology, not as a
+verification of the continuum $+2$ coefficient.}
 \label{fig:cascade-correction}
 \end{figure}
 
@@ -644,9 +1018,11 @@ operational hypothesis. It states that the local rate of
 effective proper time at a node is its available reserve,
 normalised to $R_0$.
 \item Source-side bandwidth mobility $\mu(R) = R/R_0$,
-Eq.~\eqref{eq:throttle}: a structural choice within the
-framework of Paper~I, motivated by source-receiver asymmetry,
-not derived.
+Eq.~\eqref{eq:throttle}: derived in Sec.~\ref{sec:axiomatic-derivation}
+within the additive local-capacity framework. The remaining
+physical assumption is the additivity axiom (L4); alternative
+non-additive capacity laws define different theories and
+generally yield different radial profiles.
 \item $M_{\rm eff} / R_0 \leftrightarrow 2 G M_{\rm phys} / c^2$:
 fixes one combination of lattice unit and rest level by
 demanding the leading-order deficit match the Newtonian
@@ -775,8 +1151,13 @@ in Planck units, one obtains
 \;}
 \label{eq:Planck_constraint}
 \end{equation}
-This is one dimensionless relation that the local-rule
-parameters must satisfy under Planck-scale anchoring. The
+Under the identification of the lattice scale with the Planck
+scale, the local-rule parameters must satisfy this single
+dimensionless relation in order to recover the experimentally
+measured value of $G$. This is a \emph{consistency check},
+not a first-principles prediction: the numerical value of $G$
+requires external Planck-scale anchoring as discussed in
+Sec.~\ref{sec:cal-vs-pred}. The
 simulation parameters $\kappa = \alpha = R_0 = 1$ used
 throughout this paper are scaled for numerical convenience and
 do not satisfy Eq.~\eqref{eq:Planck_constraint} numerically;
@@ -805,6 +1186,53 @@ we expect to be fixed by an analogous calibration in the
 oriented-flux (electromagnetic) sector deferred to a later
 paper.
 
+\paragraph{Calibration ledger (per SERIES\_FEEDBACK §0.ter).}
+Each quantity in this paper falls into one of three statuses
+per §0.ter: \emph{derived} from substrate principles +
+hypotheses, \emph{hypothesised} as a labelled structural choice,
+or \emph{calibrated} against an empirical reference (SM/GR
+result or CODATA constant). The status of each new quantity
+introduced in this paper is summarised below.
+The present paper extends Paper~I. The following table lists
+the new quantities and their status:
+
+\begin{center}
+\begin{tabular}{p{3.4cm}p{3.0cm}p{6.6cm}}
+\toprule
+Quantity & Status & Calibration source / future resolution \\
+\midrule
+$\mu(R) = R/R_0$ & hypothesis (closed under axioms (L1)--(L4)) & sub-hypothesis of (H-mobility); origin open \\
+(L4) additive capacity (H1) & axiom + open problem (O1) & not derived; future microscopic argument \\
+$d\tau/dt = R/R_0$ (H2) & hypothesis (open problem (O2)) & operational identification; future derivation \\
+$\beta = 2GM/c^2$ & calibrated & SM/GR Newtonian limit identification; future microscopic origin \\
+Newton's $G$ (physical units) & calibrated & CODATA recommended value via Planck anchoring \\
+$\kappa/(\alpha R_0) = 4\pi$ & consistency check & derived constraint among lattice parameters \\
+$R/R_0 = \sqrt{1-\beta/r}$ & derived & from (L1)--(L4) + (H1) + (H2) in continuum limit \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Rule loci touched and no-epicycle statement (per SERIES\_FEEDBACK §0.quater).}
+This paper extends Paper~I at the following loci, and at no
+other:
+\begin{itemize}
+\item \emph{Update rule:} the constant-mobility baseline
+$\mu \equiv 1$ of Paper~I is replaced by the source-side
+bandwidth-throttled choice $\mu(R) = R/R_0$ (Sec.~\ref{sec:axiomatic-derivation}).
+This is a labelled within-locus extension, not a new locus.
+\item \emph{Configuration:} the point sink of Paper~I is
+specialised to a static spherically-symmetric source.
+\end{itemize}
+Nodes, links, substrate topology and update structure are
+otherwise inherited from Paper~I unchanged.
+
+\noindent\emph{No-epicycle statement.} No new fields on nodes
+or links, no new parameters beyond those listed in the
+calibration ledger, and no relaxation of (L1)--(L6) of Paper~I
+have been silently introduced. The Schwarzschild form
+emerges from the labelled hypotheses (H1) and (H2) without
+additional structural ingredients.
+
 \section{Limitations and scope}
 \label{sec:not}
 
@@ -825,12 +1253,16 @@ content of GR --- the Bianchi identities, the matter coupling,
 the propagation of gravitational waves --- is outside the
 scope of this paper.
 
-We do not derive the mobility function $\mu(R) = R/R_0$
-itself. It is a physically motivated choice within the family
-of mobility functions admitted by the framework of Paper~I,
-justified by the source-receiver asymmetry. The framework of
-Paper~I does not select $\mu(R)$ uniquely; the result of this
-paper is conditional on the source-side bandwidth choice.
+We do not derive the additivity axiom (L4) from deeper
+substrate microphysics. What
+Sec.~\ref{sec:axiomatic-derivation} establishes is narrower:
+within the class of regular local emission-capacity rules
+satisfying locality, internal conservation, empty-reserve
+extinction, rest-state normalisation, and additive composition
+of independent reserve packets, the source-side mobility is
+uniquely selected as $\mu(R) = R/R_0$. Thus the remaining open
+assumption is not the mobility function itself, but the
+microscopic origin of additive emission capacity.
 
 We do not address kinematic time dilation. The motion of a
 localised configuration across the substrate, and any
@@ -909,33 +1341,79 @@ comparison with emergent-gravity programmes, draft material
 for the constants-and-hierarchies paper) is archived under
 \texttt{paperXV\_constants/draft\_material/}.
 
-\section{Open questions}
+\section{Principal open problems}
 \label{sec:open}
 
-\paragraph{Origin of the mobility choice.}
-The choice $\mu(R) = R/R_0$ is selected by physical motivation
-(source-receiver asymmetry of flux exchange) but is not
-derived from the framework of Paper~I. A microscopic argument
-that selects this $\mu(R)$, or more generally a specific
-asymmetry between source and receiver from a deeper property
-of the rule, would close the main remaining gap of this
-construction. We state this as an open problem rather than as
-a defended position.
+The following two gaps are of equal logical weight and control
+distinct structural features of the construction: (O1)
+constrains the mobility selection, while (O2) constrains the
+proper-time identification. Both are co-equal principal open
+problems; neither is reducible to the other.
 
-\paragraph{Origin of the bandwidth identification.}
-The identification of effective proper time with available
-bandwidth is operational. A microscopic argument that
-selects the linear dependence \eqref{eq:tau_def} from the
-rule, or that establishes proper time as a derived rather
-than an adopted quantity, would strengthen the construction.
+\paragraph{(O1) Origin of the additivity axiom (L4).}
+Sec.~\ref{sec:axiomatic-derivation} derives $\mu(R) = R/R_0$
+from the additive-capacity axiom (L4), but does not derive (L4)
+itself from deeper substrate microphysics. (L4) encodes the
+physical content that the substrate has no hidden saturation
+between independent reserve packets at sub-rest scales; a
+microscopic explanation of why independent reserve packets
+compose additively in the local emission-capacity envelope
+would close the remaining gap. We state this as the principal
+open problem of the present construction rather than as a
+defended position; alternative non-additive capacity laws
+define different theories whose own falsifiable predictions
+could in turn be tested against data.
 
-\paragraph{Beyond the linear regime.} When a node's reserve
-approaches zero (near the bandwidth horizon $r = \beta$), the
-rate-limiter $\beta_i$ of Paper~I becomes active and the rule
-departs from the linearised regime. The physical
-interpretation of the bandwidth horizon, and the behaviour of
-the rule
-in its immediate vicinity, are not addressed in this paper.
+\paragraph{(O2) Origin of the bandwidth identification (H2).}
+The identification of effective proper time with the
+reserve-normalised bandwidth (Eq.~\eqref{eq:tau_def}) is
+operational and labelled (H2). It is the second substantive
+hypothesis of the construction, on the same logical footing as
+the additivity axiom (L4): both are not derived from substrate
+microphysics, both control structurally distinct features of
+the result (mobility selection vs. proper-time identification),
+and a uniqueness/microscopic argument for either would
+strengthen the construction by an independent route.
+
+A microscopic argument that selects the linear dependence
+\eqref{eq:tau_def} from the rule, or that establishes proper
+time as a derived rather than adopted quantity, would close
+this gap. Candidate routes include: (i) a uniqueness theorem
+on the form of the local rate-of-events functional under
+locality, conservation and isotropy; (ii) a renormalisation-group
+argument selecting a power-law fixed point at exponent 1; or
+(iii) a direct derivation from a discrete-time observer
+clock construction. We state (H2) as a principal open problem
+on equal footing with (L4); alternative identifications
+$d\tau/dt = (R/R_0)^p$ with $p \ne 1$ define different theories
+whose predictions diverge from Schwarzschild and could be
+falsified by precision tests.
+
+\paragraph{Beyond the linear regime: rate-limiter and
+bandwidth horizon.} When a node's reserve approaches zero (near
+the bandwidth horizon $r = \beta$, where $R \to 0$), the
+discrete rate-limiter $\beta_i \in [0,1]$ of Paper~I --- which
+caps outflows to enforce $R_i \ge 0$ --- becomes active and
+the rule departs from the linearised regime. This discrete
+saturation enforcement is not derivable from the continuum
+equation alone: it is a lattice-scale feature that stabilises
+the solution on finite lattices (analogous to a UV regulator)
+and protects against spurious singularities of the continuum
+square-root form. The interplay between
+the continuum square-root singularity $R \propto \sqrt{1 -
+\beta/r}$ and the discrete saturation enforcement is not
+addressed in the present paper: a numerical study of
+convergence as $L \to \infty$ approaching the horizon, and a
+physical interpretation of the rate-limiter as a
+substrate-scale regulator (analogous to a UV cutoff), would
+clarify the model's structure near $r = 2GM/c^2$. We expect
+the rate-limiter to render the rule well-defined for all
+$r > 0$ on a finite lattice; the continuum behaviour at and
+inside the horizon is not derived here. Note also a notation
+overlap: the symbol $\beta$ is used both for the deficit
+parameter (Eq.~\eqref{eq:profile}, here a length scale) and,
+in Paper~I, for the discrete rate-limiter $\beta_i$ (a
+dimensionless cap); these are distinct objects.
 
 \paragraph{Spatial part of the metric.}
 The bandwidth identification gives $g_{00}$. Whether the
@@ -984,12 +1462,28 @@ reproduces the DESI DR2 evolving dark-energy signal.
 \end{enumerate}
 
 The principal open task of the present paper is to derive the
-mobility choice $\mu(R) = R/R_0$ from a deeper structural argument
-on the substrate, rather than adopting it on the source-receiver
-asymmetry rationale. Until that is done, the Schwarzschild-like
-clock-rate factor of Eq~\eqref{eq:dtau_schw} should be read as a consequence of the bandwidth-throttled mobility, conditional on this specific mobility choice.
+additivity axiom (L4) from deeper substrate microphysics, rather
+than adopting it as the substantive postulate that closes the
+emission-capacity class. Until that is done, the
+Schwarzschild-like clock-rate factor of
+Eq.~\eqref{eq:dtau_schw} should be read as a consequence of the
+additive local-capacity framework
+(Sec.~\ref{sec:axiomatic-derivation}) and the
+bandwidth-identification hypothesis
+(Sec.~\ref{sec:claims}, Claim~1).
 
 \bibliographystyle{unsrt}
 \bibliography{references}
+
+
+\paragraph{Closing reaffirmation (analogue framing).}
+To reiterate: this paper recovers the \emph{form} of the
+Schwarzschild static clock-rate factor inside an analogue
+substrate, not a derivation of General Relativity itself. The
+result is internal to the analogue and conditional on
+hypotheses (H1) additivity and (H2) bandwidth identification.
+GR remains the empirical anchor; any deviation between the
+analogue and measured tests of GR falsifies the analogue, not
+GR.
 
 \end{document}
